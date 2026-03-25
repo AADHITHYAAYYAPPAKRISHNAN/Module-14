@@ -25,11 +25,47 @@ To write a Python program with a function to insert float values into a Circular
 ### PROGRAM
 
 ```
+# Queue simply works in FIFO
+class queue:
+    def __init__(self, size):
+        self.size=size
+        self.queue=[]
+        self.front=0
+        self.rear=0
 
+    def enqueue(self, item):
+        if len(self.queue)==self.size:
+            print("Queue is full")
+            return
+        else:
+            self.queue.insert(self.rear,item)
+            self.rear+=1
+            
+    def dequeue(self):
+        if self.front==self.rear:
+            print("queue is underflow")
+        else:
+            self.queue.pop(self.front)
+            self.front+=1
+        
+   
+
+    def display(self):
+       print(self.queue)
+       
+
+a = int(input())
+q = queue(a)
+q.enqueue(float(input()))
+q.enqueue(float(input()))
+q.enqueue(float(input()))
+q.display()
 
 ```
 
 ### OUTPUT
+![Screenshot (258)](https://github.com/user-attachments/assets/88510507-a805-4c58-a858-36faead136b6)
 
 
 ### RESULT
+Thus the python program was initiated and executed successfully.
