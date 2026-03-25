@@ -1,71 +1,64 @@
-# Exp No: 36  
-## Circular Queue 
+
+
+# Exp.No:14a  
+## APPLICATIONS OF QUEUE
+
 ---
 
 ### AIM  
-To write a Python program with a function to insert float values into a Circular Queue.
+To write a Python program to implement CPU Process Scheduling using a queue.
 
 ---
 
-### ALGORITHM
+### ALGORITHM  
 
-1. Start  
-2. Check if the Circular Queue is full  
-   - If `size == max_size`, print `"Queue is full"` and exit the function  
-3. If the queue is not full:  
-   - Read the element to be inserted  
-   - Convert it to float  
-   - Insert the element at the `tail` position  
-   - Update tail using: `tail = (tail + 1) % max_size` (circular increment)  
-   - Increment `size` by 1  
-4. End
+1. Start the program.  
+2. Define the function `CalculateWaitingTime(at, bt, N)`.  
+3. Initialize a list `wt` of size `N` with all values set to 0.  
+4. Set `wt[0] = 0` for the first process.  
+5. Print the table header: "P.No.", "Arrival Time", "Burst Time", "Waiting Time".  
+6. Print the values for the first process.  
+7. For each process from index `1` to `N-1`:  
+   - Calculate `wt[i] = (at[i - 1] + bt[i - 1] + wt[i - 1]) - at[i]`.  
+   - Print the process number, arrival time, burst time, and waiting time.  
+8. Initialize `total_waiting_time = 0`.  
+9. Add up all waiting times.  
+10. Calculate average waiting time as `average = total_waiting_time / N`.  
+11. Print the average waiting time.  
+12. Get burst times as input from the user for 5 processes.  
+13. Call `CalculateWaitingTime()` with `at`, `bt`, and `N`.  
+14. End the program.
 
 ---
 
-### PROGRAM
+### PROGRAM  
 
-```
-# Queue simply works in FIFO
-class queue:
-    def __init__(self, size):
-        self.size=size
-        self.queue=[]
-        self.front=0
-        self.rear=0
-
-    def enqueue(self, item):
-        if len(self.queue)==self.size:
-            print("Queue is full")
-            return
-        else:
-            self.queue.insert(self.rear,item)
-            self.rear+=1
-            
-    def dequeue(self):
-        if self.front==self.rear:
-            print("queue is underflow")
-        else:
-            self.queue.pop(self.front)
-            self.front+=1
-        
-   
-
-    def display(self):
-       print(self.queue)
-       
-
-a = int(input())
-q = queue(a)
-q.enqueue(float(input()))
-q.enqueue(float(input()))
-q.enqueue(float(input()))
-q.display()
-
+```python
+def Calculatewaitingtime(at,bt,N): 
+    wt=[0]*N 
+    wt[0]=0 
+    print("P.No.\tArrival Time\t","Burst Time\tWaiting Time")
+    print("1","\t\t",at[0],"\t\t",bt[0],"\t\t",wt[0])
+    for i in range(1,5): 
+        wt[i]=(at[i-1]+bt[i-1]+wt[i-1])-at[i]
+        print(i+1,"\t\t",at[i],"\t\t",bt[i],"\t\t",wt[i])
+    average=0.0 
+    sum=0 
+    for i in range(5): 
+        sum+=wt[i]
+    average=sum/5
+    print("Average waiting time = ",average)
+N=5 
+at=[0,1,2,3,4]
+bt=[]
+for i in range(0,5): 
+    ele=int(input())
+    bt.append(ele)
+Calculatewaitingtime(at,bt,N)
 ```
 
 ### OUTPUT
-![Screenshot (258)](https://github.com/user-attachments/assets/88510507-a805-4c58-a858-36faead136b6)
-
+<img width="1187" height="526" alt="image" src="https://github.com/user-attachments/assets/89e22be2-f1f6-404b-a44f-0122ee909ba4" />
 
 ### RESULT
-Thus the python program was initiated and executed successfully.
+Therefore, the output is the example to write a Python program to implement CPU Process Scheduling using a queue.
